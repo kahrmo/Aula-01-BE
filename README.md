@@ -12,5 +12,6 @@ nodemon
 dotenv
 
 Types: 
+@types/cors: 
 @types/express":
 @types/node": "

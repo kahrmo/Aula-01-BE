@@ -7,3 +7,10 @@ O que foi feito no projeto:
 Instalar as dependencias - 
 
 Cors: Compartilhamento de recursos de origens diferentes.
+express
+nodemon
+dotenv
+
+Types: 
+@types/express":
+@types/node": "

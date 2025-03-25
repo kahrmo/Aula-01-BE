@@ -3,8 +3,12 @@ import { Router } from 'express';
 import * as AlunoController from '../controllers/AlunoController';
 import * as DisciplinaController from '../controllers/DisciplinaController';
 import * as AlunoDisciplinaController from '../controllers/AlunoDisciplinaController';
+import * as ApiController from '../controllers/apiController';
 
 const router = Router();
+
+//TESTES
+router.get('/saudacao', ApiController.apiSaudacao)
 
 router.get('/listarTodosAlunos', AlunoController.listarAlunos);
 router.post('/cadastrarAluno', AlunoController.cadastrarAluno);

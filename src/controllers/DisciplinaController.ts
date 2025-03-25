@@ -9,7 +9,6 @@ export const listarDisciplinas = async (req: Request, res: Response) => {
 export const cadastrarDisciplina = async (req: Request, res: Response) => {
     const {nome} = req.body;
 
-
     if(nome){
         let disciplinaExistente = await Disciplina.findOne({where: {nome}});
         if (!disciplinaExistente) {        

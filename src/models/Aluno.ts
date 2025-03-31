@@ -42,6 +42,7 @@ Aluno.init(
     {
         sequelize, //passamos a instância do Sequelize, conectando essa model ao banco
         tableName: "alunos",//define o nome da tabela
-        timestamps: false, // como não quermos colunas de "createdAT" e "updatedAt", desativamos timestamps
+        timestamps: true, // como não quermos colunas de "createdAT" e "updatedAt", desativamos timestamps
+        paranoid: true,
     }
 )

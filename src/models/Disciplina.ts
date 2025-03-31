@@ -22,6 +22,7 @@ Disciplina.init(
     {
         sequelize,
         tableName: "disciplinas",
-        timestamps: false,
+        timestamps: true,
+        paranoid: true,
     }
 );

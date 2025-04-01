@@ -15,7 +15,7 @@ export const cadastrarDisciplina = async (req: Request, res: Response) => {
         if (!disciplinaExistente) {        
             let novaDisciplina = await Disciplina.create({nome});
 
-            res.status(200).json({
+            return res.status(201).json({
                 message: "Disciplina cadastrada com sucesso",
                 novaDisciplina
             });

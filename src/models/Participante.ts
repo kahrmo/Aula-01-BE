@@ -1,14 +1,14 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/mysql';
 
-export class Evento extends Model{
+export class Participante extends Model{
     public id!: number;
     public nome!: string;
-    public local!: string;
-    public data!: string;
+    public cpf!: string;
+    public telefone!: number;
 }
 
-Evento.init(
+Participante.init(
     {
         //definiçãom dos atributos da tabela no banco de daos
         id: {
@@ -20,20 +20,20 @@ Evento.init(
             type: DataTypes.STRING, //define como string(varchar no banco)
             allowNull: false, //não pode ser nulo
         },
-        local: {
+        cpf: {
             type: DataTypes.STRING,
-            unique: false, // email deve ser único
+            unique: true, // email deve ser único
             allowNull: false,
         },
-        data: {
-            type: DataTypes.STRING,
-            unique: false, //matricula tbm deve ser unica
+        telefone: {
+            type: DataTypes.INTEGER,
+            unique: true, //matricula tbm deve ser unica
             allowNull: false, 
         }
     },
     {
         sequelize, //passamos a instância do Sequelize, conectando essa model ao banco
-        tableName: "evento",//define o nome da tabela
+        tableName: "alunos",//define o nome da tabela
         timestamps: true, // como não quermos colunas de "createdAT" e "updatedAt", desativamos timestamps
         paranoid: true,
     }

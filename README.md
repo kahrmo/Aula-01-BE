@@ -1,17 +1,4 @@
 # Aula-01-BE
 
-O que foi feito no projeto:
-
-1º Passo:
-
-Instalar as dependencias - 
-
-Cors: Compartilhamento de recursos de origens diferentes.
-express
-nodemon
-dotenv
-
-Types: 
-@types/cors: 
-@types/express":
-@types/node": "
+Resultado dos testes de alunos e disciplinas:
+![image](https://github.com/user-attachments/assets/8aa39f8e-f2c5-4a00-a41b-b524d2a8e95b)

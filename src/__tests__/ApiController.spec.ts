@@ -5,9 +5,9 @@ import server from '../server';
     describe("teste de cadastro de aluno", () =>{
         it("deve cadastrar um aluno na rota /cadastrarAluno", async()=>{
             const novoAluno = {
-                nome: "João da Silva Junior",
-                email: "joão@123.com",
-                matricula: "786"
+                nome: "Marcio Neto",
+                email: "marcioNeto@123.com",
+                matricula: "3125"
             };
             
             const response = await request(server).post("/cadastrarAluno").send(novoAluno);
@@ -35,10 +35,10 @@ import server from '../server';
 
     describe("testes da API de alunos - Atualizar", () =>{
         it("Deve atualizar um aluno na rota /atualizarAluno/:alunoId", async () => {
-            const alunoId = 1;
+            const alunoId = 5;
             const dadosAtualizados ={
-                nome: "João Atualizado",
-                email: "joãoatualizado@silva.com",        
+                nome: "Mauricio Atualizado",
+                email: "Mauricioatualizado@123.com",        
             };
             
             const response = await request(server).put(`/atualizarAluno/${alunoId}`).send(dadosAtualizados);
@@ -52,7 +52,7 @@ import server from '../server';
 
     describe("testes da api de alunos - deletar", ()=>{
         it("deve deletar um aluno na rota /deletarAluno/:alunoId", async () => {
-            const alunoId = 2
+            const alunoId = 7
 
             const response = await request(server).delete(`/deletarAluno/${alunoId}`);
 
@@ -89,7 +89,7 @@ import server from '../server';
     describe("teste de cadastro de disciplina", () =>{
         it("deve cadastrar uma disciplina na rota /cadastrarDisciplina", async()=>{
             const novaDisciplina= {
-                nome: "espanhol",
+                nome: "fluencia",
             };
             
             const response = await request(server).post("/cadastrarDisciplina").send(novaDisciplina);
@@ -115,9 +115,9 @@ import server from '../server';
 
     describe("testes da API de disciplinas - Atualizar", () =>{
         it("Deve atualizar um aluno na rota /atualizarDisciplina/:disciplinaId", async () => {
-            const disciplinaId = 1;
+            const disciplinaId = 6;
             const dadosAtualizados ={
-                nome: "ferrovia",        
+                nome: "historia",        
             };
             
             const response = await request(server).put(`/atualizarDisciplina/${disciplinaId}`).send(dadosAtualizados);
@@ -130,7 +130,7 @@ import server from '../server';
 
     describe("testes da api de disciplina - deletar", ()=>{
         it("deve deletar um aluno na rota /deletarDisciplina/:disciplinaId", async () => {
-            const disciplinaId = 2
+            const disciplinaId = 7 
 
             const response = await request(server).delete(`/deletarDisciplina/${disciplinaId}`);
 

@@ -17,10 +17,10 @@ router.get('/listarDisciplinas', DisciplinaController.listarDisciplinas);
 router.post('/cadastrarDisciplina', DisciplinaController.cadastrarDisciplina);
 router.put('/atualizarDisciplina/:disciplinaId', DisciplinaController.atualizarDisciplina);
 router.get('/buscarDisciplina/:disciplinaId', DisciplinaController.buscarPeloId);
+router.delete('/deletarDisciplina/:disciplinaId', DisciplinaController.deletarDisciplina);
 
 router.get('/listarDisciplinasDoAluno/:alunoId', AlunoDisciplinaController.listarDisciplinasDoAluno);
 router.post('/vincularAlunoADisciplina', AlunoDisciplinaController.vincularAlunoADisciplina);
-router.delete('/deletarDisciplina/:disciplinaId', DisciplinaController.deletarDisciplina);
 
 
 export default router;

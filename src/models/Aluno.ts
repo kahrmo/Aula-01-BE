@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/mysql';
+import { Turma } from './Turma';
 
 //Criando classe Aluno, que estende Model
 //Essa classe serve apenas para definir a estrutura dos dados que essa entidade terá no TypeScript
@@ -10,6 +11,7 @@ export class Aluno extends Model{
     public nome!: string;
     public email!: string;
     public matricula!: string;
+    public id_turma!: number
 }
 
 // Aqui é onde informamos ao sequelize como a tabela "alunos" deve ser criada
@@ -37,12 +39,21 @@ Aluno.init(
             type: DataTypes.STRING,
             unique: true, //matricula tbm deve ser unica
             allowNull: false, 
-        }
+        },
+        id_turma: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: Turma,
+                key: "id",
+            },
+            onDelete: "CASCADE",
+        },        
     },
     {
         sequelize, //passamos a instância do Sequelize, conectando essa model ao banco
         tableName: "alunos",//define o nome da tabela
-        timestamps: true, // como não quermos colunas de "createdAT" e "updatedAt", desativamos timestamps
+        timestamps: true, // como não quermos colunas de "createdAT" e "updatedAt", desativamos timestamps // * agora queremos *
         paranoid: true,
     }
 )

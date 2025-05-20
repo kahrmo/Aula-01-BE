@@ -42,7 +42,7 @@ Aluno.init(
         },
         id_turma: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: Turma,
                 key: "id",

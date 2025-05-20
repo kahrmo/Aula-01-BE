@@ -37,7 +37,7 @@ Turma.init (
     },
     {
         sequelize,
-        tableName: "Turmas",
+        tableName: "turmas",
         timestamps: true,
         paranoid: true,
     }

@@ -1,13 +1,34 @@
 import request from 'supertest';
 import server from '../server';
 
+//Testes para curso
+
+    describe("teste de cadastro de curso",()=>{
+        it("deve cadastrar um curso na rota /cadastrarCurso", async()=>{
+            const novoCurso = {
+                nome: "Analise e Desenvolvimento de Sistemas",
+                descricao: "tecnologia",
+            };
+
+            const response = await request(server).post("/cadastrarCurso").send(novoCurso);
+            expect(response.status).toBe(201);
+            //verifica se a mensagem é a mesma de sucesso
+            expect(response.body.message).toBe("Curso cadastrado com sucesso");
+            //verifica se o aluno está com as mesmas propriedades
+            expect(response.body.novoCurso).toHaveProperty("curso", novoCurso.nome);
+            expect(response.body.novoCurso).toHaveProperty("descricao", novoCurso.descricao);
+        });
+    });
+
+
 //Testes para aluno
     describe("teste de cadastro de aluno", () =>{
         it("deve cadastrar um aluno na rota /cadastrarAluno", async()=>{
             const novoAluno = {
                 nome: "Marcio Neto",
                 email: "marcioNeto@123.com",
-                matricula: "3125"
+                matricula: "3125",
+                id_turma: 1
             };
             
             const response = await request(server).post("/cadastrarAluno").send(novoAluno);
@@ -90,6 +111,7 @@ import server from '../server';
         it("deve cadastrar uma disciplina na rota /cadastrarDisciplina", async()=>{
             const novaDisciplina= {
                 nome: "fluencia",
+                id_professor: 1,
             };
             
             const response = await request(server).post("/cadastrarDisciplina").send(novaDisciplina);

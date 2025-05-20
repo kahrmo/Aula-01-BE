@@ -16,6 +16,21 @@ export const listarDisciplinasDoAluno = async (req: Request, res: Response) => {
     return res.status(404).json({error: "aluno não encontrado."});
 };
 
+export const listarAlunosVinculadosAUmaDisciplina = async (req: Request, res: Response) => {
+    
+    const { disciplinaId } = req.params;
+    
+    const disciplina = await Disciplina.findByPk(disciplinaId, {
+        include: {model: Aluno}, //inclui todas as disciplinas do aluno;
+    });
+
+    if(disciplina){
+        return res.json(disciplina); //retorna de forma crua
+    }
+    
+    return res.status(404).json({error: "Disciplina não encontrada."});
+};
+
 export const vincularAlunoADisciplina = async (req: Request, res: Response) => {
     const {alunoId, disciplinaId} = req.body;
 
@@ -31,3 +46,8 @@ export const vincularAlunoADisciplina = async (req: Request, res: Response) => {
 
     return res.json({ message: "Aluno vinculado à disciplina com sucesso"});
 };
+
+export const desvincularAlunoADisciplina = async (req: Request, res: Response) => {
+
+}
+

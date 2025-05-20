@@ -6,23 +6,26 @@ import apiRoutes from './routes/routes';
 import { conectarBanco } from './instances/mysql';
 import "./models/associations";
 
-
 dotenv.config();
 
 const server = express();
 
+// Libera o CORS
 server.use(cors());
+
+// Conecta ao banco de dados
 conectarBanco();
 
+// Serve arquivos estáticos (HTML, CSS, JS) da pasta public/
 server.use(express.static(path.join(__dirname, '../public')));
 
-// Definir o formato das requisições
-server.use(express.json()); // Usando JSON
+// Define o formato das requisições como JSON
+server.use(express.json());
 
-// Definir as rotas da API
+// Usa as rotas da API
 server.use(apiRoutes);
 
-// Endpoint para caso o usuário acesse um caminho inexistente
+// Rota para caminhos inexistentes
 server.use((req: Request, res: Response) => {
     res.status(404).json({ error: 'Endpoint não encontrado.' });
 });
@@ -34,8 +37,8 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 };
 server.use(errorHandler);
 
-// Iniciar o servidor e exibir a porta no console
-const port = process.env.PORT || 3000; // Defina uma porta padrão se não estiver no .env
+// Inicia o servidor
+const port = process.env.PORT || 3000;
 server.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });

@@ -18,7 +18,7 @@ export const sequelize = new Sequelize (
 //Função para testar a conexão
 export const conectarBanco = async () => {
     try {
-        await sequelize.authenticate();
+        await sequelize.authenticate(); 
         console.log("Conectado ao banco de dados com sucesso!");
     } catch (error) {
         console.error("Erro ao conecar ao banco de dados:",error);

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Testando API</title>
+</head>
+<body>
+  <h1>API Front</h1>
+  <button onclick="gerarToken()">Gerar Token</button>
+  <pre id="resultado"></pre>
+
+  <script>
+    async function gerarToken() {
+      const resposta = await fetch('/gerar-token');
+      const data = await resposta.json();
+      document.getElementById('resultado').textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>

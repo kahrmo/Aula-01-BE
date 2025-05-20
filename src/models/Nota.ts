@@ -47,6 +47,7 @@ Nota.init(
     },
     {
         sequelize,
-        tableName: "notas"
+        tableName: "notas",
+        timestamps: false,
     }
 )

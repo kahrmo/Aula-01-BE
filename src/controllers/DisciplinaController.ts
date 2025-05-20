@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Disciplina } from "../models/Disciplina";
 import { AlunoDisciplina } from "../models/AlunoDisciplina";
+import { Professor } from "../models/Professor";
 
 export const listarDisciplinas = async (req: Request, res: Response) => {
     const disciplinas = await Disciplina.findAll();
@@ -8,19 +9,19 @@ export const listarDisciplinas = async (req: Request, res: Response) => {
 };
 
 export const cadastrarDisciplina = async (req: Request, res: Response) => {
-    const {nome} = req.body;
+    const {nome, id_professor} = req.body;
 
     if(nome){
         let disciplinaExistente = await Disciplina.findOne({where: {nome}});
         if (!disciplinaExistente) {        
-            let novaDisciplina = await Disciplina.create({nome});
+            let novaDisciplina = await Disciplina.create({nome, id_professor});
 
             return res.status(201).json({
                 message: "Disciplina cadastrada com sucesso",
                 novaDisciplina
             });
         } else {
-            return res.status(400).json({ error: "Nome da disciplina já existe."})
+            return res.status(400).json({ error: "Disciplina já existe."})
         }
 
     }
@@ -70,7 +71,7 @@ export const deletarDisciplina = async (req: Request, res: Response ) => {
 
         return res.json({ message: "Disciplina deletada com sucesso"});
     } catch (error) {
-        return res.status(500).json({ message: "Erro ao deletar disciplina."});
+        return res.status(500).json({ message: "Erro ao deletar disciplina.", error});
     }
 };
 
@@ -82,4 +83,13 @@ export const buscarPeloId = async (req: Request, res: Response) => {
         return res.status(200).json({ message: "Disciplina encontrada", disciplina});
     }
         return res.status(404).json({ message: "Disciplina não encontrada"});
+};
+
+
+//Listar alunos reprovados por nota ou presença.
+export const listarAlunosReprovadosNaDisciplina = async (req: Request, res: Response) => {
+  const { disciplinaId } = req.params;
+  
+  
+  
 };
